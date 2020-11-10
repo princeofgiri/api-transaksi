@@ -91,7 +91,7 @@ func (app *App) getUser(w http.ResponseWriter, req *http.Request) {
 	id := vars["id"]
 	var user User
 	err := app.Db.QueryRow(
-		`SELECT id, username, password, last_login FROM users WHERE id=$1`,
+		`SELECT id, username, password, last_login FROM users WHERE id=?`,
 		id).Scan(
 		&user.ID,
 		&user.Username,
